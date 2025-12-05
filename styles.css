@@ -1,0 +1,291 @@
+/* styles.css — Professional UI for Industrial IT portfolio */
+
+/* =======================
+   Theme variables
+   ======================= */
+:root{
+  --maxw:1100px;
+
+  /* Light theme */
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #0f1720;
+  --muted: #6b7280;
+  --accent: #0b76ff;
+  --accent-2: #0b63d9;
+  --glass: rgba(255,255,255,0.6);
+
+  --radius: 12px;
+  --shadow-sm: 0 4px 18px rgba(12, 24, 48, 0.06);
+  --shadow-lg: 0 10px 30px rgba(12, 24, 48, 0.10);
+  --mono: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* dark theme toggled with data-theme="dark" on <html> */
+[data-theme="dark"]{
+  --bg: #071024;
+  --card: #071827;
+  --text: #e6eef8;
+  --muted: #98a8bf;
+  --accent: #4da3ff;
+  --accent-2: #2e90ff;
+  --glass: rgba(255,255,255,0.03);
+  --shadow-sm: 0 4px 18px rgba(3,8,15,0.55);
+  --shadow-lg: 0 10px 30px rgba(3,8,15,0.6);
+}
+
+/* =======================
+   Base
+   ======================= */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: var(--mono);
+  background: linear-gradient(180deg, var(--bg), #eef3fb 1600px);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition: background .35s ease, color .35s ease;
+}
+
+/* Centered container */
+.container{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:28px;
+}
+
+/* Links */
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* =======================
+   Header / Nav
+   ======================= */
+.header{
+  position:sticky;
+  top:0;
+  z-index:60;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));
+  border-bottom: 1px solid rgba(12,24,48,0.04);
+}
+
+[data-theme="dark"] .header{
+  background: linear-gradient(180deg, rgba(7,24,36,0.7), rgba(7,24,36,0.55));
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+.nav-wrapper{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  justify-content:space-between;
+  padding:10px 0;
+}
+
+/* Brand */
+.logo{
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--text);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color:transparent;
+  font-size:1.1rem;
+}
+
+/* Main nav */
+.main-nav{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.main-nav a{
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:600;
+  color:var(--muted);
+  transition:all .18s ease;
+}
+.main-nav a:hover{ color:var(--accent); transform:translateY(-1px) }
+.main-nav a.active{
+  background: linear-gradient(90deg, rgba(11,118,255,0.12), rgba(11,99,217,0.06));
+  color:var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Theme button */
+.theme-btn{
+  border: none;
+  background:var(--card);
+  padding:8px 10px;
+  border-radius:8px;
+  box-shadow: var(--shadow-sm);
+  cursor:pointer;
+  color:var(--text);
+  font-weight:600;
+}
+.theme-btn:hover{ opacity:0.95 }
+
+/* =======================
+   Hero
+   ======================= */
+.hero{
+  display:flex;
+  gap:32px;
+  align-items:center;
+  padding:38px 0;
+}
+
+.hero-left{flex:0 0 200px}
+.hero-photo{
+  width:200px;
+  height:200px;
+  border-radius:16px;
+  object-fit:cover;
+  border:6px solid rgba(11,118,255,0.06);
+  box-shadow:var(--shadow-lg);
+}
+
+/* Right side */
+.hero-right{flex:1}
+.hero-right h1{
+  margin:0 0 8px;
+  font-size:1.6rem;
+  letter-spacing:0.2px;
+}
+.tagline{
+  margin:8px 0 18px;
+  color:var(--muted);
+  font-weight:500;
+}
+
+/* hero actions */
+.hero-actions{display:flex;gap:12px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  border:1px solid transparent;
+  font-weight:700;
+}
+.btn.primary{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.btn.outline{
+  background:transparent;
+  border:1px solid rgba(11,118,255,0.12);
+  color:var(--accent);
+}
+
+/* =======================
+   Sections and cards
+   ======================= */
+section{margin:28px 0}
+h2{margin:0 0 16px;font-size:1.2rem}
+p{line-height:1.6;color:var(--muted)}
+
+.about-grid{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+
+/* Skill and project cards */
+.skill-card, .project, .service-card, .contact-form, .about-skills{
+  background:var(--card);
+  padding:16px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.skill-card:hover, .project:hover{ transform: translateY(-6px); box-shadow:var(--shadow-lg) }
+
+/* Grids */
+.skills-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+  margin-top:12px;
+}
+.services-grid{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Projects list */
+.projects .project{ margin-bottom:12px }
+
+/* Contact layout */
+.contact-grid{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+.contact-info{min-width:240px}
+.contact-form label{display:block;margin-bottom:10px;font-weight:600}
+.contact-form input, .contact-form textarea{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(12,24,48,0.06);
+  background:transparent;
+  color:var(--text);
+  outline:none;
+}
+.contact-form .btn.primary{width:100%}
+
+/* Footer */
+.footer{
+  padding:18px 0;
+  margin-top:32px;
+  color:var(--muted);
+  text-align:center;
+  border-top:1px solid rgba(12,24,48,0.04);
+}
+
+/* =======================
+   Utilities
+   ======================= */
+.tag{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--glass);
+  color:var(--muted);
+  font-weight:600;
+  font-size:0.85rem;
+}
+
+/* =======================
+   Responsive
+   ======================= */
+@media (max-width: 980px){
+  .container{padding:20px}
+  .hero{flex-direction:column; align-items:center; text-align:center}
+  .hero-left{order:2}
+  .hero-right{order:1}
+  .hero-photo{width:160px;height:160px}
+  .skills-grid{grid-template-columns: 1fr}
+  .about-grid{flex-direction:column}
+  .contact-grid{flex-direction:column}
+  .main-nav{display:none} /* hide main nav, consider adding mobile menu later */
+}
+
+/* =======================
+   Dark-theme overrides for focused elements (optional)
+   ======================= */
+[data-theme="dark"] .btn.outline{
+  border:1px solid rgba(77,163,255,0.12);
+  color:var(--accent);
+}
+[data-theme="dark"] .main-nav a{ color:var(--muted) }
+[data-theme="dark"] .main-nav a.active{ background: rgba(77,163,255,0.08); color:var(--accent) }
